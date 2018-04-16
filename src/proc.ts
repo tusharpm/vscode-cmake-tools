@@ -71,6 +71,7 @@ export interface ExecutionOptions {
   silent?: boolean;
   cwd?: string;
   encoding?: BufferEncoding;
+  windowsVerbatimArguments?: boolean;
 }
 
 /**
@@ -105,6 +106,7 @@ export function execute(command: string,
   const spawn_opts: proc.SpawnOptions = {
     env: final_env,
     shell: !!options.shell,
+    windowsVerbatimArguments: !!options.windowsVerbatimArguments,
   };
   if (options && options.cwd) {
     spawn_opts.cwd = options.cwd;
